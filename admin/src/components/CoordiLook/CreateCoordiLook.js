@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 import getData from '../../api/getData';
 import postData from '../../api/postData';
 import deleteData from '../../api/deleteData';
@@ -14,6 +16,8 @@ const CreateCoordiLook = () => {
   const [selectedStylePoint, setSelectedStylePoint] = useState('');
   const [createdCoordiLook, setCreatedCoordiLook] = useState(null);
 
+  const { id } = useParams();
+
   useEffect(() => {
     const fetchStylePoints = async () => {
       const data = await getData('stylepoints');
@@ -22,7 +26,8 @@ const CreateCoordiLook = () => {
       }
     };
     fetchStylePoints();
-  }, []);
+  }, [id]); // Make sure id is defined or remove it if not needed
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();

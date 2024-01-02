@@ -11,15 +11,16 @@ function StylePointDetail() {
   const { id } = useParams();
   const [stylePoint, setStylePoint] = useState({});
   const [brands, setBrands] = useState([]);
-  const [coordiLooks, setCoordiLooks] = useState([]);
+  const [coordilooks, setCoordilooks] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getData(`stylepoint/${id}`);
-      if (data) {
-        setStylePoint(data.stylePoint);
-        setBrands(data.brands);
-        setCoordiLooks(data.coordilooks);
+      const response = await getData(`stylepoint/${id}`);
+      if (response) {
+        const { stylepoint, brands, coordilooks } = response;
+        setStylePoint(stylepoint);
+        setBrands(brands);
+        setCoordilooks(coordilooks);
       }
     };
     fetchData();
@@ -35,9 +36,8 @@ function StylePointDetail() {
     window.location.reload();
   };
 
-
   return (
-    <div >
+    <div>
       <div className="Main">
         <h1>{stylePoint.title}</h1>
         <StylePointTableSingle stylePoint={stylePoint} />
@@ -50,9 +50,9 @@ function StylePointDetail() {
 
       <div className="Sub">
         <h2>{stylePoint.title} coordiLooks</h2>
-        <CoordiLookTableMap coordiLooks={coordiLooks} onDelete={handleDeletecoordiLook} />
+        <CoordiLookTableMap coordiLooks={coordilooks} onDelete={handleDeletecoordiLook} />
       </div>
-    </div >
+    </div>
   );
 }
 

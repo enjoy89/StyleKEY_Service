@@ -17,12 +17,13 @@ const EditStylePoint = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getData(`stylepoint/${id}`);
-            if (data) {
-                setStylePointData(data.stylePoint);
-                setTitle(data.stylePoint.title);
-                setDescription(data.stylePoint.description);
-                setImage(data.stylePoint.image);
+            const response = await getData(`stylepoint/${id}`);
+            if (response) {
+                const { stylepoint } = response;
+                setStylePointData(stylepoint);
+                setTitle(stylepoint.title);
+                setDescription(stylepoint.description);
+                setImage(stylepoint.image);
             }
         };
         fetchData();
@@ -35,7 +36,10 @@ const EditStylePoint = () => {
             description,
             image,
         };
-        putData('stylepoint', id, newData, (updatedData) => { setUpdatedStylePoint(updatedData); });
+        const response = await putData(`stylepoint/${id}`, newData);
+        if (response) {
+            setUpdatedStylePoint(response.stylepoint);
+        }
     };
 
     return (

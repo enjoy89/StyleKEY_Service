@@ -60,6 +60,18 @@ const CreateItem = () => {
     <div>
       <h2>Create New item</h2>
       <form onSubmit={handleSubmit}>
+
+      <div>
+          <label>coordilook</label>
+          <select value={selectedCoordiLook} onChange={(event) => setSelectedCoordiLook(event.target.value)} required>
+            <option value="">coordilook</option>
+            {coordiLooks && coordiLooks.map((coordiLook) => (
+              <option key={coordiLook.id} value={coordiLook.id}>{coordiLook.title}</option>
+            ))}
+          </select>
+        </div>
+
+        
         <div>
           <label>brand</label>
           <select value={selectedBrand} onChange={(event) => setSelectedBrand(event.target.value)} required>
@@ -70,15 +82,6 @@ const CreateItem = () => {
           </select>
         </div>
 
-        <div>
-          <label>coordilook</label>
-          <select value={selectedCoordiLook} onChange={(event) => setSelectedCoordiLook(event.target.value)} required>
-            <option value="">coordilook</option>
-            {coordiLooks && coordiLooks.map((coordiLook) => (
-              <option key={coordiLook.id} value={coordiLook.id}>{coordiLook.title}</option>
-            ))}
-          </select>
-        </div>
 
         <div>
           <label>category</label>
