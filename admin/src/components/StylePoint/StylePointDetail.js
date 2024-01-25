@@ -15,7 +15,7 @@ function StylePointDetail() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getData(`stylepoint/${id}`);
+      const response = await getData(`style-points/${id}`);
       if (response) {
         const { stylepoint, brands, coordilooks } = response;
         setStylePoint(stylepoint);

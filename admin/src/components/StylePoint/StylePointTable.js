@@ -17,10 +17,10 @@ function StylePointTable({ stylePoint }) {
   return (
     <tr>
       <td>{stylePoint.id}</td>
-      <td><Link to={`/stylepoint/${stylePoint.id}`} className="btn btn-title">{stylePoint.title}</Link></td>
+      <td><Link to={`/style-points/${stylePoint.id}`} className="btn btn-title">{stylePoint.title}</Link></td>
       <td>{stylePoint.description}</td>
       <td><img src={stylePoint.image} alt={stylePoint.title} /></td>
-      <td><a href={`/stylePoint/${stylePoint.id}/edit`} className="btn btn-edit">edit</a></td>
+      <td><a href={`/style-points/${stylePoint.id}/edit`} className="btn btn-edit">edit</a></td>
     </tr>
   );
 }

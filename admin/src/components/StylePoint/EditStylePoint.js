@@ -17,7 +17,7 @@ const EditStylePoint = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await getData(`stylepoint/${id}`);
+            const response = await getData(`style-points/${id}`);
             if (response) {
                 const { stylepoint } = response;
                 setStylePointData(stylepoint);
@@ -36,7 +36,7 @@ const EditStylePoint = () => {
             description,
             image,
         };
-        const response = await putData(`stylepoint/${id}`, newData);
+        const response = await putData(`style-points/${id}`, newData);
         if (response) {
             setUpdatedStylePoint(response.stylepoint);
         }
